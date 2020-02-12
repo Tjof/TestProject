@@ -28,8 +28,8 @@
             <TextBox Grid.Column="1" PlaceholderText="Введите сумму"/>
             <TextBlock Grid.Row="2" x:Name="Currency1"/>
             <TextBlock Grid.Row="2" Grid.Column="1" x:Name="Currency2"/>
-            <Button Grid.Row="3" x:Name="ChangeCurrency1"/>
-            <Button Grid.Row="3" Grid.Column="1" x:Name="ChangeCurrency2"/>
+            <Button Grid.Row="3" x:Name="ChangeCurrency1" Click="ChangeCurrency1_Click"/>
+            <Button Grid.Row="3" Grid.Column="1" x:Name="ChangeCurrency2" Click="ChangeCurrency2_Click"/>
         </Grid>
 
     </StackPanel>
