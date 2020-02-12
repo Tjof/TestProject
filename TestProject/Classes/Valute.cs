@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestProject.Classes
 {
-    class Valute
+    public class Valute
     {
         public string ID { get; set; }
         public string NumCode { get; set; }

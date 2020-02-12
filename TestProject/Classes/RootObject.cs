@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestProject.Classes
 {
-    class RootObject
+    public class RootObject
     {
         public DateTime Date { get; set; }
         public DateTime PreviousDate { get; set; }
