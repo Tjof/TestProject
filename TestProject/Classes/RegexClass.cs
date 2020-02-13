@@ -12,7 +12,7 @@ namespace TestProject.Classes
         public static bool RegexSum(string sum)
         {
             string s = sum;
-            Regex regexSum = new Regex(@"\d{1,12}(,)*$"); //имеется проблема с 2 и более "," . Решения пока не нашёл.
+            Regex regexSum = new Regex(@"((\d{1,}[\,])|(\d{1,})|(^$))$"); //исправил, но не идеальный вариант регулярки.
             MatchCollection matches = regexSum.Matches(s);
             if (matches.Count > 0)
             {

@@ -123,8 +123,12 @@
     <Compile Include="Classes\RegexClass.cs" />
     <Compile Include="Classes\RootObject.cs" />
     <Compile Include="Classes\Valute.cs" />
+    <Compile Include="Classes\WarningRegex.cs" />
     <Compile Include="CurrencyСonverter.xaml.cs">
       <DependentUpon>CurrencyСonverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadScreen.xaml.cs">
+      <DependentUpon>LoadScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -155,6 +159,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="CurrencyСonverter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

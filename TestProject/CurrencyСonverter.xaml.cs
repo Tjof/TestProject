@@ -91,12 +91,16 @@ namespace TestProject
             {
                 Valute selectValute = (Valute)e.Parameter;
                 ConvertResult convertResult = new ConvertResult();
+                WarningRegex warningRegex = new WarningRegex();
                 if (activeButton == ChangeCurrency1.Name)
                 {
                     Currency1CharCode.Text = selectValute.CharCode;
                     currency1 = selectValute;
                     if (RegexClass.RegexSum(Currency1.Text))
                         Currency2.Text = convertResult.Result(Currency1.Text, Currency2.Text, currency1, currency2);
+                    else
+                        Currency1.Text = warningRegex.Warning(Currency1.Text);
+                    Currency1.SelectionStart = Currency1.Text.Length;
                 }
                 if (activeButton == ChangeCurrency2.Name)
                 {
@@ -104,6 +108,9 @@ namespace TestProject
                     currency2 = selectValute;
                     if (RegexClass.RegexSum(Currency2.Text))
                         Currency1.Text = convertResult.Result(Currency2.Text, Currency1.Text, currency2, currency1);
+                    else
+                        Currency2.Text = warningRegex.Warning(Currency2.Text);
+                    Currency2.SelectionStart = Currency2.Text.Length;
                 }
             }
         }
@@ -111,30 +118,23 @@ namespace TestProject
         private void Currency1_SelectionChanged(object sender, RoutedEventArgs e)
         {
             ConvertResult convertResult = new ConvertResult();
+            WarningRegex warningRegex = new WarningRegex();
             if (RegexClass.RegexSum(Currency1.Text))
                 Currency2.Text = convertResult.Result(Currency1.Text, Currency2.Text, currency1, currency2);
             else
-            {
-                if (Currency1.Text.Length == 0)
-                    Currency1.Text = String.Empty;
-                else
-                    Currency1.Text = Currency1.Text.Substring(0, Currency1.Text.Length - 1);
-                Currency1.SelectionStart = Currency1.Text.Length;
-                //ContentDialog warningDialog = new ContentDialog()
-                //{
-                //    Title = "Ошибка",
-                //    Content = "Введите число корректно",
-                //    PrimaryButtonText = "ОК"
-                //};
-                //await warningDialog.ShowAsync();
-            }
+                Currency1.Text = warningRegex.Warning(Currency1.Text);
+            Currency1.SelectionStart = Currency1.Text.Length;
         }
 
         private void Currency2_SelectionChanged(object sender, RoutedEventArgs e)
         {
             ConvertResult convertResult = new ConvertResult();
+            WarningRegex warningRegex = new WarningRegex();
             if (RegexClass.RegexSum(Currency2.Text))
                 Currency1.Text = convertResult.Result(Currency2.Text, Currency1.Text, currency2, currency1);
+            else
+                Currency2.Text = warningRegex.Warning(Currency2.Text);
+            Currency2.SelectionStart = Currency2.Text.Length;
         }
     }
 }

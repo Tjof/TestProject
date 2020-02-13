@@ -66,7 +66,7 @@ namespace TestProject
                     // Если стек навигации не восстанавливается для перехода к первой странице,
                     // настройка новой страницы путем передачи необходимой информации в качестве параметра
                     // навигации
-                    rootFrame.Navigate(typeof(CurrencyСonverter), e.Arguments);
+                    rootFrame.Navigate(typeof(LoadScreen), e.Arguments);
                 }
                 // Обеспечение активности текущего окна
                 Window.Current.Activate();
