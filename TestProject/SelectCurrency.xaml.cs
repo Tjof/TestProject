@@ -53,7 +53,7 @@ namespace TestProject
             {
                 currencyCollection = (ObservableCollection<Valute>)e.Parameter;
                 ResultList = currencyCollection;
-                valuteList.ItemsSource = ResultList;
+                ValuteList.ItemsSource = ResultList;
             }
         }
 
@@ -64,5 +64,14 @@ namespace TestProject
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         #endregion
+
+        private void valuteList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectValute = ValuteList.SelectedItem as Valute;
+            if (Frame.CanGoForward)
+                Frame.GoForward();
+            else
+                Frame.Navigate(typeof(CurrencyСonverter), selectValute);
+        }
     }
 }

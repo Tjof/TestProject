@@ -30,6 +30,7 @@ namespace TestProject
         Valute currency1;
         Valute currency2;
         ObservableCollection<Valute> currencyCollection = new ObservableCollection<Valute>();
+        private string activeButton;
 
         public CurrencyСonverter()
         {
@@ -60,14 +61,15 @@ namespace TestProject
                 currencyCollection.Add(valute);
             }
 
-            currency1 = currencyCollection.FirstOrDefault(x=>x.CharCode == "USD");
+            currency1 = currencyCollection.FirstOrDefault(x => x.CharCode == "USD");
             Currency1CharCode.Text = currency1.CharCode;
-            currency2 = currencyCollection.FirstOrDefault(x=>x.CharCode == "EUR");
+            currency2 = currencyCollection.FirstOrDefault(x => x.CharCode == "EUR");
             Currency2CharCode.Text = currency2.CharCode;
         }
 
         private void ChangeCurrency1_Click(object sender, RoutedEventArgs e)
         {
+            activeButton = ChangeCurrency1.Name;
             if (Frame.CanGoForward)
                 Frame.GoForward();
             else
@@ -76,22 +78,63 @@ namespace TestProject
 
         private void ChangeCurrency2_Click(object sender, RoutedEventArgs e)
         {
+            activeButton = ChangeCurrency2.Name;
             if (Frame.CanGoForward)
                 Frame.GoForward();
             else
                 Frame.Navigate(typeof(SelectCurrency), currencyCollection);
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter != null && e.Parameter != String.Empty) //При первой загрузке e.Parameter равен "" . Не смог иначе обойти данную ошибку.
+            {
+                Valute selectValute = (Valute)e.Parameter;
+                ConvertResult convertResult = new ConvertResult();
+                if (activeButton == ChangeCurrency1.Name)
+                {
+                    Currency1CharCode.Text = selectValute.CharCode;
+                    currency1 = selectValute;
+                    if (RegexClass.RegexSum(Currency1.Text))
+                        Currency2.Text = convertResult.Result(Currency1.Text, Currency2.Text, currency1, currency2);
+                }
+                if (activeButton == ChangeCurrency2.Name)
+                {
+                    Currency2CharCode.Text = selectValute.CharCode;
+                    currency2 = selectValute;
+                    if (RegexClass.RegexSum(Currency2.Text))
+                        Currency1.Text = convertResult.Result(Currency2.Text, Currency1.Text, currency2, currency1);
+                }
+            }
+        }
+
         private void Currency1_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            int currencySum = Int32.Parse(Currency1.Text);
-            float result = (currency1.Value / currency1.Nominal * currencySum) / (currency2.Value / currency2.Nominal);
-            Currency2.Text = result.ToString();
+            ConvertResult convertResult = new ConvertResult();
+            if (RegexClass.RegexSum(Currency1.Text))
+                Currency2.Text = convertResult.Result(Currency1.Text, Currency2.Text, currency1, currency2);
+            else
+            {
+                if (Currency1.Text.Length == 0)
+                    Currency1.Text = String.Empty;
+                else
+                    Currency1.Text = Currency1.Text.Substring(0, Currency1.Text.Length - 1);
+                Currency1.SelectionStart = Currency1.Text.Length;
+                //ContentDialog warningDialog = new ContentDialog()
+                //{
+                //    Title = "Ошибка",
+                //    Content = "Введите число корректно",
+                //    PrimaryButtonText = "ОК"
+                //};
+                //await warningDialog.ShowAsync();
+            }
         }
 
         private void Currency2_SelectionChanged(object sender, RoutedEventArgs e)
         {
-
+            ConvertResult convertResult = new ConvertResult();
+            if (RegexClass.RegexSum(Currency2.Text))
+                Currency1.Text = convertResult.Result(Currency2.Text, Currency1.Text, currency2, currency1);
         }
     }
 }

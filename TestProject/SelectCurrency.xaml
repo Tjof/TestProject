@@ -14,7 +14,10 @@
             <TextBlock Margin="10" Text="Выбор валют" Foreground="White"/>
         </Border>
 
-        <ListBox Name="valuteList" DisplayMemberPath="Name" /> \
+        <ScrollViewer>
+            <!--Добавил высоту 650, потому что ScrollViewer не хотел работать.-->
+            <ListBox Name="ValuteList" DisplayMemberPath="Name" Height="650" SelectionChanged="valuteList_SelectionChanged"/>
+        </ScrollViewer>
 
     </StackPanel>
 </Page>

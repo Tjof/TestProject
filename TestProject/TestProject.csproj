@@ -119,6 +119,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ConvertResult.cs" />
+    <Compile Include="Classes\RegexClass.cs" />
     <Compile Include="Classes\RootObject.cs" />
     <Compile Include="Classes\Valute.cs" />
     <Compile Include="CurrencyСonverter.xaml.cs">
