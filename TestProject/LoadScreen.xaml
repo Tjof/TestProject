@@ -9,11 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <Border Background="Blue">
-            <TextBlock Margin="10" Text="Конвертер ЗАГРУЖАЕМСЯ" Foreground="White"/>
+        <Border>
+            <TextBlock Margin="10" Text="Конвертер валют" Foreground="White"/>
         </Border>
-        
-        <ProgressRing Name="LoadBox" Foreground="Black" IsActive="True" />
-
-        </StackPanel>
+        <ProgressRing IsActive="True"/>
+    </StackPanel>
 </Page>

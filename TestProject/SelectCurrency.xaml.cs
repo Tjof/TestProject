@@ -53,6 +53,7 @@ namespace TestProject
             {
                 currencyCollection = (ObservableCollection<Valute>)e.Parameter;
                 ResultList = currencyCollection;
+                //заполняем ListBox коллекцией валют
                 ValuteList.ItemsSource = ResultList;
             }
         }
@@ -67,6 +68,7 @@ namespace TestProject
 
         private void valuteList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //передаем выбранную валюту в форму конвертера валют
             var selectValute = ValuteList.SelectedItem as Valute;
             if (Frame.CanGoForward)
                 Frame.GoForward();

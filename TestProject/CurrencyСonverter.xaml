@@ -10,7 +10,7 @@
     NavigationCacheMode="Required">
 
     <StackPanel>
-        <Border Background="Blue">
+        <Border>
             <TextBlock Margin="10" Text="Конвертер валют" Foreground="White"/>
         </Border>
         <Grid>
@@ -26,10 +26,15 @@
             </Grid.RowDefinitions>
             <TextBox PlaceholderText="Введите сумму" x:Name="Currency1" SelectionChanged="Currency1_SelectionChanged"/>
             <TextBox Grid.Column="1" PlaceholderText="Введите сумму" x:Name="Currency2" SelectionChanged="Currency2_SelectionChanged"/>
+            <Image Grid.Row="1" Grid.ColumnSpan="2" Source="arrow-swap.png"/>
             <TextBlock Grid.Row="2" x:Name="Currency1CharCode"/>
             <TextBlock Grid.Row="2" Grid.Column="1" x:Name="Currency2CharCode"/>
-            <Button Grid.Row="3" x:Name="ChangeCurrency1" Click="ChangeCurrency1_Click"/>
-            <Button Grid.Row="3" Grid.Column="1" x:Name="ChangeCurrency2" Click="ChangeCurrency2_Click"/>
+            <Button Grid.Row="3" x:Name="ChangeCurrency1" Click="ChangeCurrency1_Click">
+                <TextBlock Text="Изменить валюту" TextWrapping="Wrap"/>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="1" x:Name="ChangeCurrency2" Click="ChangeCurrency2_Click">
+                <TextBlock Text="Изменить валюту" TextWrapping="Wrap"/>
+            </Button>
         </Grid>
 
     </StackPanel>

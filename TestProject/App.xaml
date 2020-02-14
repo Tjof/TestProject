@@ -28,5 +28,14 @@
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"/>
         </Style>
+        <Style TargetType="ProgressRing">
+            <Setter Property="Foreground" Value="#808080"/>
+            <Setter Property="Margin" Value="200"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="100"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="Background" Value="#27509e"/>
+        </Style>
     </Application.Resources>
 </Application>

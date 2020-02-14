@@ -50,10 +50,13 @@ namespace TestProject
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (e.PreviousExecutionState != ApplicationExecutionState.Terminated)
                 {
-                    //TODO: Загрузить состояние из ранее приостановленного приложения
-                }
+                    bool loadState = (e.PreviousExecutionState == ApplicationExecutionState.Terminated);
+                    LoadScreen loadScreen = new LoadScreen(e.SplashScreen);
+                    rootFrame.Content = loadScreen;
+                    Window.Current.Content = rootFrame;
+                }   
 
                 // Размещение фрейма в текущем окне
                 Window.Current.Content = rootFrame;
@@ -66,7 +69,7 @@ namespace TestProject
                     // Если стек навигации не восстанавливается для перехода к первой странице,
                     // настройка новой страницы путем передачи необходимой информации в качестве параметра
                     // навигации
-                    rootFrame.Navigate(typeof(CurrencyСonverter), e.Arguments);
+                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
                 // Обеспечение активности текущего окна
                 Window.Current.Activate();
@@ -93,7 +96,6 @@ namespace TestProject
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Сохранить состояние приложения и остановить все фоновые операции
             deferral.Complete();
         }
     }

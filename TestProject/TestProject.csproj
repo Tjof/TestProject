@@ -120,9 +120,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\ConvertResult.cs" />
+    <Compile Include="Classes\ParserClass.cs" />
     <Compile Include="Classes\RegexClass.cs" />
-    <Compile Include="Classes\RootObject.cs" />
+    <Compile Include="Classes\QuoteData.cs" />
     <Compile Include="Classes\Valute.cs" />
+    <Compile Include="Classes\Variables.cs" />
     <Compile Include="Classes\WarningRegex.cs" />
     <Compile Include="CurrencyСonverter.xaml.cs">
       <DependentUpon>CurrencyСonverter.xaml</DependentUpon>
@@ -144,6 +146,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="arrow-swap.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

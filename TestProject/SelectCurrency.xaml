@@ -10,7 +10,7 @@
 
     <StackPanel>
 
-        <Border Background="Blue">
+        <Border>
             <TextBlock Margin="10" Text="Выбор валют" Foreground="White"/>
         </Border>
 
